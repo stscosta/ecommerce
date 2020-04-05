@@ -1,9 +1,9 @@
 {
-    "name": "SidneySantiago/ecommerce",
+    "name": "hcodebr/ecommerce",
     "authors": [
         {
-            "name": "Sidney Santiago",
-            "email": "sidneyts.costa@gmail.com"
+            "name": "Hcode Treinamentos",
+            "email": "suporte@hcode.com.br"
         }
     ],
     "require": {
