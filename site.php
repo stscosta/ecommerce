@@ -16,24 +16,19 @@ $app->get('/', function() {
 });
 
 
-
-//use \Hcode\Model\Cart;
-//use \Hcode\Model\Address;
-//use \Hcode\Model\Order;
-//use \Hcode\Model\OrderStatus;
-
-/*$app->get('/', function() {
-
-	$products = Product::listAll();
-
+$app->get("/categories/:idcategory", function($idcategory){
+	
+	$category = new Category();
+	
+	$category->get((int)$idcategory);
 	$page = new Page();
-
-	$page->setTpl("index", [
-		'products'=>Product::checkList($products)
-	]);
-
+	$page->setTpl("category", [
+		'category'=>$category->getValues(),
+		'products'=>Product::checkList($category->getProducts())
+	]);	
 });
-*/
+
+
 /*$app->get("/categories/:idcategory", function($idcategory){
 
 	$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
