@@ -2,37 +2,52 @@
 session_start();
 require_once("vendor/autoload.php");
 
-use \Slim\Slim; // CLasses que serão carregadas 
-use \Hcode\Page;
-use \Hcode\PageAdmin;
-use \Hcode\Model\User;
-use \Hcode\Model\Category;
+use \Slim\Slim;
 
-$app = new Slim();  // criação de rotas 
+$app = new Slim();
+
 $app->config('debug', true);
 
+//require_once("functions.php");
+// Gerenciar as páginas do site
+require_once("site.php");
+
+require_once("admin.php");
+
+require_once("admin-users.php");
+
+require_once("admin-categories.php");
+
+require_once("admin-products.php");
+
+//require_once("admin-orders.php");
+
+
+
+
+
 //ROTA DAS PÁGINAS GERAIS
-$app->get('/', function() {
+/*$app->get('/', function() {
 	$page = new Page();
 	$page->setTpl("index"); 
 });
-
+*/
 // ROTA DAS PÁGINAS DO ADMINISTRADOR
-$app->get('/admin', function() {
+/*$app->get('/admin', function() {
 	User::verifyLogin();
 	$page = new PageAdmin();
 	$page->setTpl("index"); 
 });
-
+*/
 //ROTA PARA VALIDAR O LOGIN
-$app->get("/admin/login", function() {
+/*$app->get("/admin/login", function() {
 	$page = new PageAdmin([
 		"header"=>false,
 		"footer"=>false
 	]);
 	$page->setTpl("login");
-});
-$app->post("/admin/login", function() {
+});*/
+/*$app->post("/admin/login", function() {
 	User::login($_POST["login"], $_POST["password"]);
 	header("Location: /admin");
 	exit;
@@ -42,11 +57,11 @@ $app->get("/admin/logout", function() {
 	header("Location: /admin/login");
 	exit;
 });
-
+*/
 // ROTAS PARA O CRUD  DOS USUÁRIOS
 
 //Lista todos os usuários
-$app->get("/admin/users", function(){
+/*$app->get("/admin/users", function(){
 	User::verifyLogin();
 	$users = User::listAll();
 	$page = new PageAdmin();
@@ -66,9 +81,9 @@ $app->get("/admin/users/:iduser/delete", function($iduser){
 	$user->delete();
 	header("Location: /admin/users");
  	exit;
-});
+});*/
 //Update
-$app->get("/admin/users/:iduser", function($iduser){
+/*$app->get("/admin/users/:iduser", function($iduser){
 	User::verifyLogin();
 	$user = new User();
 	$user->get((int)$iduser);
@@ -77,8 +92,8 @@ $app->get("/admin/users/:iduser", function($iduser){
 		"user"=>$user->getValues()
 	));
 });
-
-$app->post("/admin/users/create", function(){
+*/
+/*$app->post("/admin/users/create", function(){
 	User::verifyLogin();
 	$user = new User();
  	$_POST["inadmin"] = (isset($_POST["inadmin"])) ? 1 : 0;
@@ -86,9 +101,9 @@ $app->post("/admin/users/create", function(){
  	$user->save();
 	header("Location: /admin/users");
  	exit;
-});
+});*/
 //Salvar a edição
-$app->post("/admin/users/:iduser", function($iduser){
+/*$app->post("/admin/users/:iduser", function($iduser){
 	User::verifyLogin();
 	$user = new User();
 	$_POST["inadmin"] = (isset($_POST["inadmin"])) ? 1 : 0;
@@ -98,9 +113,9 @@ $app->post("/admin/users/:iduser", function($iduser){
  	header("Location: /admin/users");
  	exit;
 });
-
+*/
 // ESQUECEU A SENHA
-$app->get("/admin/forgot", function(){
+/*$app->get("/admin/forgot", function(){
 	$page = new PageAdmin([
 		"header"=>false,
 		"footer"=>false
@@ -123,8 +138,8 @@ $app->get("/admin/forgot/sent", function(){
 	$page->setTpl("forgot-sent");
 	exit;
 });
-
-$app->get("/admin/forgot/reset", function(){
+*/
+/*$app->get("/admin/forgot/reset", function(){
 	$user = User::ValidForgotDecrypt($_GET["code"]);
 	$page = new PageAdmin([
 		"header"=>false,
@@ -153,10 +168,10 @@ $app->post("/admin/forgot/reset", function(){
 	$page->setTpl("forgot-reset-success");
 	
 });
-
+*/
 // CRUD DAS CATEGORIAS
 
-$app->get("/admin/categories", function(){
+/*$app->get("/admin/categories", function(){
 	User::verifyLogin();
 	$categories = Category::listAll();
 	$page = new PageAdmin();
@@ -178,8 +193,8 @@ $app->post("/admin/categories/create", function(){
 	header('Location: /admin/categories');
 	exit;
 });
-
-$app->get("/admin/categories/:idcategory/delete", function($idcategory){
+*/
+/*$app->get("/admin/categories/:idcategory/delete", function($idcategory){
 	User::verifyLogin();
 	$category = new Category();
 	$category->get((int)$idcategory);
@@ -197,8 +212,8 @@ $app->get("/admin/categories/:idcategory", function($idcategory){
 		'category'=>$category->getValues()
 	]);
 });
-
-$app->post("/admin/categories/:idcategory", function($idcategory){
+*/
+/*$app->post("/admin/categories/:idcategory", function($idcategory){
     User::verifyLogin();
 	$category = new Category();
 	$category->get((int)$idcategory);
@@ -226,7 +241,7 @@ $app->get("/categories/:idcategory", function($idcategory){
 
 });
 
-
+*/
 
 
 
