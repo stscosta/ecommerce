@@ -1,1 +1,1 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><li><a href="/categories/5">Andróide</a></li><li><a href="/categories/6">Apple</a></li><li><a href="/categories/8">Motorola</a></li><li><a href="/categories/7">Sansung</a></li><li><a href="/categories/9">Superteste</a></li>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><li><a href="/categories/11">Eletrodomésticos</a></li><li><a href="/categories/10">Eletrônicos</a></li><li><a href="/categories/12">Esporte e Aventura</a></li>
